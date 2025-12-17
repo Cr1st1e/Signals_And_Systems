@@ -62,16 +62,19 @@ function mainTask1()
     title('arg(F_2(j\omega))'); xlabel('\omega [rad/s]'); ylabel('Phase [rad]'); grid on;
 end
 
+% FT formula for dirac pulse
 function [ftVec]= computeFT_diracPulse(omega,t0)
     ftVec=exp(-1j*omega*t0);
 end
 
+%formula for magnitude and phase
 function [magSpec,phaseSpec]= getMagPhaseSpectra_fromFTVec(ftVec)
     magSpec = abs(ftVec);
     phaseSpec = atan2(imag(ftVec), real(ftVec));
     % phaseSpec = angle(ftVec);
 end
 
+%formula from preparation
 function [magSpec, phaseSpec] = getMagPhaseSpectra_precalculated(omega)
     t0 = 1e-3;
     magSpec = 2 * abs(cos(omega * t0 / 2));
